@@ -2,7 +2,7 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type WorkoutHistory {
-    id: ID
+    id: ID!
     date: String
     type: String
     duration: Int
