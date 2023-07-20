@@ -8,33 +8,31 @@ function WorkoutHistory() {
 
   useEffect(() => {
     // Simulating the data with some example workouts and their exercises
-    const workoutHistory = [
+    const exampleWorkoutHistory = [
       {
-        id: "" ,
+        id: "",
         name: "",
         description: "",
         muscleType: "",
         duration: "",
         exercises: [
-          { id: 1, name: "", sets: "" , reps: "" },
-          { id: 2, name: "", sets: "" , reps: "" },
-          { id: 3, name: "", sets: "" , reps: "" },
-          { id: 4, name: "", sets: "" , reps: "" },
-          { id: 5, name: "", sets: "" , reps: "" },
-          { id: 6, name: "", sets: "" , reps: "" },
-          { id: 7, name: "", sets: "" , reps: "" },
+          { id: 1, name: "", sets: "", reps: "" },
+          { id: 2, name: "", sets: "", reps: "" },
+          { id: 3, name: "", sets: "", reps: "" },
+          { id: 4, name: "", sets: "", reps: "" },
+          { id: 5, name: "", sets: "", reps: "" },
+          { id: 6, name: "", sets: "", reps: "" },
+          { id: 7, name: "", sets: "", reps: "" },
         ],
       },
-    ]
+    ];
 
-  ];
+    setWorkoutHistory(exampleWorkoutHistory);
+  }, []);
 
-  setWorkoutHistory(exampleWorkoutHistory);
-}, []);
-
-const handleSelectWorkoutHistory = (selectedWorkout) => {
-  setSelectedWorkout(selectedWorkout);
-};
+  const handleSelectWorkoutHistory = (selectedWorkout) => {
+    setSelectedWorkout(selectedWorkout);
+  };
 
   return (
     <div style={{ fontFamily: "Arial, sans-serif", margin: "2rem" }}>
