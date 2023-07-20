@@ -1,0 +1,27 @@
+
+
+{
+    "name": "EXEREASE",
+    "short_name": "EASY",
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#333333",
+    "background_color": "#CCCCCC",
+    "icons": [
+      {
+        "src": "logo.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "workout-background3.jpg",
+        "sizes": "512x512",
+        "type": "image/png"
+      },
+      {
+        "src": "workout-background4.jpg",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }

@@ -24,7 +24,7 @@ const resolvers = {
       updateUser: async (parent, { id, input }, context) => {
         return await User.findByIdAndUpdate(id, input, { new: true });
       },
-      deleteUser: async (parent, { id }, context) => {
+      removeUser: async (parent, { id }, context) => {
         return await User.findByIdAndDelete(id);
       },
     }, 

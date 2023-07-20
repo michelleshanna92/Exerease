@@ -26,7 +26,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createWorkoutGoal(input: workOutGoalInput!): workoutGoal
+    createWorkoutGoal(input: workoutGoalInput!): workoutGoal
     updateWorkoutGoal(id: ID!, input: workoutGoalInput!): workoutGoal
     deleteWorkoutGoal(id: ID!): workoutGoal
   }
