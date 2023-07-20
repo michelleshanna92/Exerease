@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-function WorkoutHistory () {
+function WorkoutHistory() {
   const [workoutHistory, setWorkoutHistory] = useState([]);
-  useEffect(() => {
-  }, []);
-  const handleSelectWorkoutHistory = (selectedWorkout) => {
-  };
+  const [selectedWorkout, setSelectedWorkout] = useState(null);
+
+
 
   return (
     <div style={{ fontFamily: "Arial, sans-serif", margin: "2rem" }}>
