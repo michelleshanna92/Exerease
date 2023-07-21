@@ -18,3 +18,10 @@ const data = {
   ],
   };
   
+  const App = () => {
+    const [selectedId, setSelectedId] = useState(data.exercises[0].id);
+    const [selectedExercise, setSelectedExercise] = useState(data.exercises[0]);
+    
+    useEffect(() => {
+    updateUI(selectedId);
+    }, [selectedId]);
