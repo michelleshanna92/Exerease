@@ -76,3 +76,26 @@ const data = {
           value={selectedExercise.muscleType}
           readOnly
           />
+          </div>
+<div>
+<label htmlFor="exerciseDuration">Exercise Duration:</label>
+<input
+type="text"
+id="exerciseDuration"
+value={selectedExercise.duration}
+readOnly
+/>
+</div>
+<div>
+<h3>Exercises:</h3>
+<ul id="exercisesList">
+{data.exercises.map((exercise) => (
+<li key={exercise.id}>
+{`ID: ${exercise.id}, Name: ${exercise.name}, Sets: ${exercise.sets}, Reps: ${exercise.reps}`}
+</li>
+))}
+</ul>
+</div>
+</div>
+);
+};
