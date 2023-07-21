@@ -25,3 +25,7 @@ const data = {
     useEffect(() => {
     updateUI(selectedId);
     }, [selectedId]);
+
+    const exerciseIdDropdownChangeHandler = (event) => {
+      setSelectedId(event.target.value);
+      };
