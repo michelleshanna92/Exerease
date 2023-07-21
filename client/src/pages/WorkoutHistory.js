@@ -29,3 +29,10 @@ const data = {
     const exerciseIdDropdownChangeHandler = (event) => {
       setSelectedId(event.target.value);
       };
+
+      const updateUI = (selectedId) => {
+        const selectedExercise = data.exercises.find(
+        (exercise) => exercise.id === parseInt(selectedId, 10)
+        );
+        setSelectedExercise(selectedExercise);
+        };
