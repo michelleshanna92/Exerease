@@ -36,3 +36,43 @@ const data = {
         );
         setSelectedExercise(selectedExercise);
         };
+
+        return (
+          <div>
+          <h1>Workout Data</h1>
+          <div>
+          <label htmlFor="exerciseId">Exercise ID:</label>
+          <select id="exerciseId" onChange={exerciseIdDropdownChangeHandler}>
+          {data.exercises.map((exercise) => (
+          <option key={exercise.id} value={exercise.id}>
+          {exercise.id}
+          </option>
+          ))}
+          </select>
+          </div>
+          <div>
+          <label htmlFor="exerciseName">Exercise Name:</label>
+          <input
+          type="text"
+          id="exerciseName"
+          value={selectedExercise.name}
+          readOnly
+          />
+          </div>
+          <div>
+          <label htmlFor="exerciseDescription">Exercise Description:</label>
+          <input
+          type="text"
+          id="exerciseDescription"
+          value={selectedExercise.description}
+          readOnly
+          />
+          </div>
+          <div>
+          <label htmlFor="muscleType">Muscle Type:</label>
+          <input
+          type="text"
+          id="muscleType"
+          value={selectedExercise.muscleType}
+          readOnly
+          />
