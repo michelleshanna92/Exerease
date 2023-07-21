@@ -7,8 +7,8 @@ function WorkoutHistory() {
   const [selectedWorkout, setSelectedWorkout] = useState(null);
 
   useEffect(() => {
-    // Simulating the data with some example workouts and their exercises
-    const exampleWorkoutHistory = [
+    
+    const WorkoutHistory = [
       {
         id: "",
         name: "",
@@ -27,7 +27,7 @@ function WorkoutHistory() {
       },
     ];
 
-    setWorkoutHistory(exampleWorkoutHistory);
+    setWorkoutHistory(WorkoutHistory);
   }, []);
 
   const handleSelectWorkoutHistory = (selectedWorkout) => {
