@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+"import { gql } from "@apollo/client";
 
 export const QUERY_PROFILES = gql`
   query allProfiles {
@@ -29,7 +29,7 @@ export const GET_WORKOUT_HISTORY = gql`
       duration
       calories
     }
-  }
+  }"
 `;
 
 export const GET_WORKOUT_GOAL = gql`
