@@ -3,7 +3,6 @@ import { useQuery } from '@apollo/client';
 
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import Calendar from '../components/Calendar';
 import { GET_WORKOUT_HISTORY } from '../utils/queries'; 
 import { GET_WORKOUT_GOAL } from '../utils/queries';
 
