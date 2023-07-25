@@ -3,38 +3,9 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_PROFILE } from '../utils/mutations';
 
-const SignupForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [signup, { error, data }] = useMutation(ADD_PROFILE);
+import Auth from '../utils/auth'
 
-  const handleChangeEmail = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handleChangePassword = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      const { data } = await signup({
-        variables: { email, password },
-      });
-
-      // Handle successful signup
-      console.log(data);
-    } catch (e) {
-      console.error(e);
-    }
-
-    // Clear form values
-    setEmail('');
-    setPassword('');
-  };
-
+const SignupForm = ({ setIsLogin }) => {
   const containerStyle = {
     maxWidth: '400px',
     margin: '0 auto',
@@ -42,9 +13,19 @@ const SignupForm = () => {
     backgroundColor: '#f5f5f5',
     borderRadius: '5px',
     boxShadow: '0 2px 5px rgba(0, 0, 0, 0.3)',
-    backgroundImage: 'url(/workout-background.jpg)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+  };
+
+  const headerStyle = {
+    padding: '10px',
+    backgroundColor: '#007bff',
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: '24px',
+    borderRadius: '5px 5px 0 0',
+  };
+
+  const bodyStyle = {
+    padding: '20px',
   };
 
   const inputStyle = {
@@ -67,42 +48,93 @@ const SignupForm = () => {
     cursor: 'pointer',
   };
 
-  const buttonHoverStyle = {
-    ...buttonStyle,
-    backgroundColor: '#0056b3',
+  const linkStyle = {
+    color: '#007bff',
+    cursor: 'pointer',
+    textDecoration: 'underline',
+  };
+
+  const [signup, { error, data }] = useMutation(ADD_PROFILE);
+
+  const [formState, setFormState] = useState({
+    user:'',
+    name: '',
+    email: '',
+    password: '',
+  });
+
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+
+    try {
+      const { data } = await signup({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
     <div style={containerStyle}>
-      <h4>Sign Up</h4>
-      <form onSubmit={handleSubmit}>
+      <div style={headerStyle}>
+        Sign Up
+      </div>
+      <form onSubmit={handleFormSubmit}>
+      <input
+          style={inputStyle}
+          type="text"
+          placeholder="username"
+          name='user'
+          onChange={handleChange}
+        />
+      <input
+          style={inputStyle}
+          type="text"
+          placeholder="your name"
+          name='name'
+          onChange={handleChange}
+        />
         <input
           style={inputStyle}
           type="email"
           placeholder="Your email"
-          value={email}
-          onChange={handleChangeEmail}
+          name='email'
+          onChange={handleChange}
         />
         <input
           style={inputStyle}
           type="password"
           placeholder="******"
-          value={password}
-          onChange={handleChangePassword}
+          name='password'
+          onChange={handleChange}
         />
         <button style={buttonStyle} type="submit">Sign Up</button>
       </form>
 
-      {data && (
-        <p>
-          Success! You may now head{' '}
-          <Link to="/">back to the homepage.</Link>
-        </p>
-      )}
-
-      {error && <p>{error.message}</p>}
+      {/* Toggle between "Log In" and "Sign Up" forms */}
+      <p>
+        Already have an account?{' '}
+        <Link to="/login" style={linkStyle} onClick={() => setIsLogin(true)}>
+          Log In
+        </Link>
+      </p>
     </div>
   );
 };
 
 export default SignupForm;
+
