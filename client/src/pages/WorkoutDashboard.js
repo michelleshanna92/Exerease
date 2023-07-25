@@ -110,11 +110,7 @@ const Profile = ({ user }) => {
           <strong>Workout Goal:</strong> {user.workoutGoal}
         </p>
       </div>
-      <div>
-        <h3>Your Workout History:</h3>
-        {<Calendar value={user.workoutHistory.map((workout) => new Date(workout.date))} />}
-
-      </div></>
+      </>
   
   
   );

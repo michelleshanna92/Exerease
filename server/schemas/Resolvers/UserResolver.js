@@ -1,6 +1,7 @@
 const { gql } = require("apollo-server-express");
 const User = require("../../models/User.js"); // Corrected import
 const jwt = require("jsonwebtoken"); // import jsonwebtoken
+//const bcrypt = require('bcrypt');
 
 const userResolvers = {
   Query: {
@@ -11,7 +12,23 @@ const userResolvers = {
       return user;
     },
   },
+  
+
   Mutation: {
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new Error('Invalid email or password');
+      }
+
+      /*const validPassword = await bcrypt.compare(password, user.password);
+
+      if (!validPassword) {
+        throw new Error('Invalid email or password');
+      }*/
+    },
+
     addUser: async (parent, { user, name, email, password }, context) => {
       const newUser = await User.create({ user, name, email, password });
 
@@ -42,6 +59,7 @@ const userResolvers = {
       return await User.findByIdAndDelete(id);
     },
   },
-};
+}
+
 
 module.exports = userResolvers;
